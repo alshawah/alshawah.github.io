@@ -44,6 +44,7 @@
       background: var(--card-bg);
       padding: 10px 20px;
       text-align: center;
+      position: relative;
     }
 
     nav a {
@@ -53,15 +54,53 @@
       font-weight: 600;
     }
 
-    #themeToggle {
-      margin-left: 10px;
-      padding: 6px 12px;
-      font-size: 0.9rem;
-      background: var(--link-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
+    .theme-switch-wrapper {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+    }
+
+    .theme-switch {
+      display: inline-block;
+      height: 24px;
+      position: relative;
+      width: 48px;
+    }
+
+    .theme-switch input {
+      display: none;
+    }
+
+    .slider {
+      background-color: #ccc;
+      bottom: 0;
       cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      background-color: white;
+      bottom: 4px;
+      content: "";
+      height: 16px;
+      left: 4px;
+      position: absolute;
+      transition: 0.4s;
+      width: 16px;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4ea2f2;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
     }
 
     .content {
@@ -106,12 +145,18 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
-    <button id="themeToggle">Toggle Dark Mode</button>
+    <div class="theme-switch-wrapper">
+    <span style="margin-right: 5px;">Toggle Dark/Light Mode</span>
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <span class="slider round"></span>
+      </label>
+    </div>
   </nav>
 
   <div class="content">
     <h2>My Projects</h2>
-    
+
     <div class="project">
       <img src="images/flavour-cartel.png" alt="Flavour Cartel Screenshot">
       <div class="info">
@@ -132,17 +177,22 @@
   </div>
 
   <script>
-    const toggleBtn = document.getElementById('themeToggle');
+    const checkbox = document.getElementById('checkbox');
     const body = document.body;
 
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
+      checkbox.checked = true;
     }
 
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+      }
     });
   </script>
 </body>
