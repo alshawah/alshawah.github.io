@@ -5,55 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --header-bg: #222;
+      --header-text: #fff;
+      --card-bg: #fff;
+      --link-color: #0077cc;
+    }
+
+    .dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #e4e4e4;
+      --header-bg: #111;
+      --header-text: #ffffff;
+      --card-bg: #2a2a2a;
+      --link-color: #4ea2f2;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
-      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
+      padding: 0;
     }
+
     header {
-      background: #222;
-      color: white;
+      background: var(--header-bg);
+      color: var(--header-text);
       padding: 40px 0;
       text-align: center;
     }
+
     nav {
-      background: #fff;
+      background: var(--card-bg);
       padding: 10px 20px;
       text-align: center;
     }
+
     nav a {
       margin: 0 10px;
-      color: #0077cc;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: 600;
     }
+
+    #themeToggle {
+      margin-left: 10px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      background: var(--link-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .content {
       max-width: 900px;
       margin: 30px auto;
       padding: 0 20px;
     }
+
     .project {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       margin-bottom: 40px;
-      background: white;
+      background: var(--card-bg);
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
       align-items: center;
     }
+
     .project img {
       width: 200px;
       border-radius: 8px;
     }
+
     .info {
       flex: 1;
     }
+
     a {
-      color: #0077cc;
+      color: var(--link-color);
       text-decoration: none;
     }
   </style>
@@ -67,30 +106,44 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
+    <button id="themeToggle">Toggle Dark Mode</button>
   </nav>
 
   <div class="content">
     <h2>My Projects</h2>
     
     <div class="project">
-        <img src="images/flavour-cartel.png" alt="Flavour Cartel Screenshot">
-        <div class="info">
-          <h3>Flavour Cartel (University Project)</h3>
-          <p>Collaborating on a web application that uses AI and web scraping to help users discover and compare recipe ideas. The app allows users to input a dish name, then uses OpenAI to generate a recipe while integrating marketplace-like features for discovering similar dishes. Built with Node.js, Express, MySQL, and OpenAI’s API, the project combines AI integration, user interaction design, and full-stack development.</p>
-          <a href="https://github.com/MuzamilAhmed1/The-Flavour-Cartel" target="_blank">View on GitHub</a>
-        </div>
+      <img src="images/flavour-cartel.png" alt="Flavour Cartel Screenshot">
+      <div class="info">
+        <h3>Flavour Cartel (University Project)</h3>
+        <p>Collaborating on a web application that uses AI and web scraping to help users discover and compare recipe ideas. The app allows users to input a dish name, then uses OpenAI to generate a recipe while integrating marketplace-like features for discovering similar dishes. Built with Node.js, Express, MySQL, and OpenAI’s API, the project combines AI integration, user interaction design, and full-stack development.</p>
+        <a href="https://github.com/MuzamilAhmed1/The-Flavour-Cartel" target="_blank">View on GitHub</a>
       </div>
-      
+    </div>
 
     <div class="project">
       <img src="images/ebay-scraper.png" alt="eBay Scraper Screenshot">
       <div class="info">
         <h3>eBay Flipping Tool (Upcoming Personal Project)</h3>
-        <p>Collaborating on a web application that uses AI and web scraping to help users find the best online deals. The user inputs a product name, and the app searches multiple marketplaces (e.g. Facebook Marketplace, eBay), comparing listings and recommending the best value. We’re using Python, Flask, SQL for the backend, and HTML for the frontend. This project blends AI development, automation, UX design, and entrepreneurial thinking.
-            Currently in development.</p>
+        <p>Collaborating on a web application that uses AI and web scraping to help users find the best online deals. The user inputs a product name, and the app searches multiple marketplaces (e.g. Facebook Marketplace, eBay), comparing listings and recommending the best value. We’re using Python, Flask, SQL for the backend, and HTML for the frontend. This project blends AI development, automation, UX design, and entrepreneurial thinking. Currently in development.</p>
         <a href="https://github.com/alshawah" target="_blank">See My GitHub</a>
       </div>
     </div>
   </div>
+
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
 </body>
 </html>

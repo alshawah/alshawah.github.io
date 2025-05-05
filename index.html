@@ -4,31 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --header-bg: #222;
+      --header-text: #fff;
+      --card-bg: #fff;
+      --link-color: #0077cc;
+    }
+
+    .dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #e4e4e4;
+      --header-bg: #111;
+      --header-text: #ffffff;
+      --card-bg: #2a2a2a;
+      --link-color: #4ea2f2;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background: #f4f4f4;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
     }
     header {
-      background: #222;
-      color: white;
+      background: var(--header-bg);
+      color: var(--header-text);
       padding: 40px 0;
       text-align: center;
     }
     nav {
-      background: #fff;
+      background: var(--card-bg);
       padding: 10px 20px;
       text-align: center;
     }
     nav a {
       margin: 0 10px;
-      color: #0077cc;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: 600;
+    }
+    #themeToggle {
+      margin-left: 10px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      background: var(--link-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
     section {
       max-width: 800px;
@@ -46,7 +74,7 @@
       font-size: 1rem;
     }
     form button {
-      background-color: #0077cc;
+      background-color: var(--link-color);
       color: white;
       border: none;
       cursor: pointer;
@@ -54,8 +82,8 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #222;
-      color: white;
+      background: var(--header-bg);
+      color: var(--header-text);
     }
   </style>
 </head>
@@ -69,6 +97,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
+    <button id="themeToggle">Toggle Dark Mode</button>
   </nav>
 
   <section>
@@ -97,6 +126,21 @@
   <footer>
     &copy; 2025 Hesham Alshawabka
   </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
 
 </body>
 </html>
