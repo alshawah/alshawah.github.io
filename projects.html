@@ -3,20 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects - Hesham</title>
+  <title>Projects</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: #f8f9fa;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      padding: 0;
+      margin: 0;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
     }
     nav {
+      background: #fff;
+      padding: 10px 20px;
       text-align: center;
-      margin-bottom: 30px;
     }
     nav a {
       margin: 0 10px;
@@ -24,8 +30,10 @@
       text-decoration: none;
       font-weight: 600;
     }
-    h1 {
-      text-align: center;
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
     .project {
       display: flex;
@@ -51,28 +59,35 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Hesham Alshawabka</h1>
+    <p>Computer Science Student | Web Developer | AI Enthusiast</p>
+  </header>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
   </nav>
 
-  <h1>My Projects</h1>
+  <div class="content">
+    <h2>My Projects</h2>
 
-  <div class="project">
-    <img src="images/flavour-cartel.png" alt="Flavour Cartel Screenshot">
-    <div class="info">
-      <h2>Flavour Cartel</h2>
-      <p>Recipe sharing web app built with Node.js, MySQL, and OpenAI's API. I handled the AI integration and login system.</p>
-      <a href="https://github.com/your-username/flavour-cartel" target="_blank">View on GitHub</a>
+    <div class="project">
+      <img src="images/flavour-cartel.png" alt="Flavour Cartel Screenshot">
+      <div class="info">
+        <h3>Flavour Cartel (University Project)</h3>
+        <p>A recipe-sharing web app built with Node.js, MySQL, and OpenAI's API. I worked on the AI integration and login system.</p>
+        <a href="https://github.com/MuzamilAhmed1/The-Flavour-Cartel" target="_blank">View on GitHub</a>
+      </div>
     </div>
-  </div>
 
-  <div class="project">
-    <img src="images/ebay-scraper.png" alt="eBay Scraper Screenshot">
-    <div class="info">
-      <h2>eBay Flipping Tool</h2>
-      <p>Tool that scrapes eBay listings to find profitable items to flip. Work in progress.</p>
-      <a href="https://github.com/your-username/ebay-flipping-tool" target="_blank">View on GitHub</a>
+    <div class="project">
+      <img src="images/ebay-scraper.png" alt="eBay Scraper Screenshot">
+      <div class="info">
+        <h3>eBay Flipping Tool (Upcoming Personal Project)</h3>
+        <p>A tool designed to scrape eBay listings to help identify profitable flipping opportunities. Currently in development.</p>
+        <a href="https://github.com/alshawah" target="_blank">See My GitHub</a>
+      </div>
     </div>
   </div>
 </body>
